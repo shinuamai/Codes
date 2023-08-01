@@ -1,0 +1,68 @@
+'use strict';
+
+const fs = require('fs');
+
+process.stdin.resume();
+process.stdin.setEncoding('utf-8');
+
+let inputString = '';
+let currentLine = 0;
+
+process.stdin.on('data', function(inputStdin) {
+    inputString += inputStdin;
+});
+
+process.stdin.on('end', function() {
+    inputString = inputString.split('\n');
+
+    main();
+});
+
+function readLine() {
+    return inputString[currentLine++];
+}
+
+
+
+/*
+ * Complete the 'countSubstrings' function below.
+ *
+ * The function is expected to return an INTEGER.
+ * The function accepts STRING input_str as parameter.
+ */
+
+function countSubstrings(input_str) {
+    const mappedValues = {
+        'a': 1, 'b': 1, 'c': 2, 'd': 2, 'e': 2, 'f': 3,
+        'g': 3, 'h': 3, 'i': 4, 'j': 4, 'k': 4, 'l': 5,
+        'm': 5, 'n': 5, 'o': 6, 'p': 6, 'q': 6, 'r': 7,
+        's': 7, 't': 7, 'u': 8, 'v': 8, 'w': 8, 'x': 9, 'y': 9, 'z': 9
+    };
+
+    let count = 0;
+    for (let i = 0; i < input_str.length; i++) {
+        let sum = 0;
+        for (let j = i; j < input_str.length; j++) {
+        sum += mappedValues[input_str[j]];
+        const substringLength = j - i + 1;
+        if (sum % substringLength === 0) {
+            count++;
+        }
+        }
+    }
+
+    return count;
+
+}
+
+function main() {
+    const ws = fs.createWriteStream(process.env.OUTPUT_PATH);
+
+    const input_str = readLine();
+
+    const result = countSubstrings(input_str);
+
+    ws.write(result + '\n');
+
+    ws.end();
+}
