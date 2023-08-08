@@ -32,3 +32,42 @@ st>@as matches my_string = str(14 // my_int)
         ex>@be matches 14 + 15
     as>@ex matches my_num = 14 + 15
 st>@as maches my_num = 14 + 15
+
+<st trying to match if 'COOKIES'.isupper: newline indent 'milk' newline dedent
+  <cs trying to match if 'COOKIES'.isupper: newline indent 'milk' newline dedent
+    <if trying to match if 'COOKIES'.isupper: newline indent 'milk' newline dedent
+      <ex trying to match 'COOKIES'.isupper
+        <ar trying to match 'COOKIES'
+          <ex trying to match 'COOKIES'
+          ex>@li matches 'COOKIES
+        ar>@id matches 'COOKIES'.isupper
+      ex>@ar matches 'COOKIES'.isupper
+      <su trying to match newline indent 'milk' newline dedent
+        <st trying to match 'milk' newline
+          <ss trying to match 'milk'
+            <es trying to match 'milk'
+              <ex trying to match 'milk'
+              ex>@li matches 'milk'
+            es>@ex matches 'milk'
+          ss>@es matches 'milk'
+        st>@nl matches 'milk' newline
+      su>@de matches newline indent 'milk' newline dedent
+    if>@su matches newline indent 'milk' newline dedent
+  cs>@if matches if 'COOKIES'.isupper: newline indent 'milk' newline dedent
+st>@cs matches if 'COOKIES'.isupper: newline indent 'milk' newline dedent
+
+<if starting if age >= 18: school = 'university of alberta'.title()
+  <be starting age >= 18
+    <id> evaluated age to get int 20
+    <li> evaluated 18 to get int 18
+  be> evaluated age >= 18 to get bool true
+  <su starting school = 'university of alberta'.title()
+    <as starting school = 'university of alberta'.title()
+      <fc starting 'university of alberta'.title()
+        <ar starting 'university of alberta'.title
+          <li> evaluated 'university of alberta' to get str university of alberta
+        ar> evaluated 'university of alberta'.title to get function title
+      fc> evaluated 'university of alberta'.title() to get str University Of Alberta
+    as> evaluated school = 'university of alberta'.title()
+  su> evaluated school = 'university of alberta'.title()
+if> evaluated if age >= 18: school = 'university of alberta'.title()
